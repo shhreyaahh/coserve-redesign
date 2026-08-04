@@ -1,0 +1,66 @@
+:root {
+  /* Colors */
+  --primary: #0f172a;
+  --secondary: #1e293b;
+  --accent: #63e6be;
+
+  --text: #f8fafc;
+  --text-dark: #1f2937;
+
+  --bg: #08131c;
+  --bg-light: #f8fafc;
+
+  /* Mint Palette */
+  --mint: #68d4c2;
+  --mint-deep: #4fb8a6;
+  --mint-pop: #35c6a8;
+  --mint-soft: #eafaf6;
+
+  /* Dark Palette */
+  --dark: #0f1518;
+  --dark-warm: #0b1a33;
+  --dark-warm-line: rgba(255, 255, 255, 0.12);
+
+  /* Neutral */
+  --white: #ffffff;
+  --warm-white: #f6f5f1;
+  --ink: #27313b;
+  --ink-secondary: #66717c;
+  --ink-border: rgba(39, 49, 59, 0.16);
+
+  /* Backgrounds */
+  --services-bg: #f5f6f3;
+  --about-bg: #f6f7f4;
+  --partners-bg: var(--dark-warm);
+  --partners-card-bg: #eceee9;
+  --clients-bg: var(--dark-warm);
+
+  /* Layout */
+  /* Fluid container system: scales with the viewport up to a 1700px cap,
+     never stretching edge-to-edge on ultra-wide monitors. Side padding
+     stays responsive via --container-pad. */
+  --container: var(--container-max);
+  --container-max: min(1700px, 100%);
+  --container-pad: clamp(24px, 5vw, 80px);
+  --padding: 80px;
+
+  /* Component heights */
+  --nav-height: 84px;
+  --signal-strip-height: 38px;
+
+  /* Section Spacing */
+  --section-space-desktop: 96px;
+  --section-space-tablet: 68px;
+  --section-space-mobile: 52px;
+
+  /* Radius */
+  --radius: 18px;
+
+  /* Transition */
+  --transition: 0.35s ease;
+
+  /* Fonts */
+  --font-body: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display:
+    "Archivo Expanded", "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+}
