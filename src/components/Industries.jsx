@@ -10,8 +10,10 @@ import "../styles/globals.css";
  * and the Learn More link grows an underline + slides its arrow on hover.
  */
 function IndustryCard({ industry }) {
+  // TEMP (design review): all six cards point to the single Manufacturing
+  // page. Revert to `href={industry.href}` to restore per-industry routing.
   return (
-    <a href={industry.href} className="industry-card">
+    <a href="/industries/manufacturing" className="industry-card">
       {/* Image band — full width, edge-to-edge, object-fit cover. */}
       <div className="industry-card__media">
         <img
@@ -29,7 +31,9 @@ function IndustryCard({ industry }) {
         <p className="industry-card__description">{industry.description}</p>
         <span className="industry-card__link">
           Learn More{" "}
-          <span className="industry-card__arrow" aria-hidden="true">→</span>
+          <span className="industry-card__arrow" aria-hidden="true">
+            →
+          </span>
         </span>
       </div>
     </a>
@@ -41,7 +45,7 @@ function IndustryCard({ industry }) {
  * Uniform responsive 3×2 grid — all six cards share equal dimensions.
  * Tablet: 2 columns. Mobile: single column (handled in CSS).
  */
-function IndustryGrid({ industries }) {
+export function IndustryGrid({ industries }) {
   return (
     <div className="industry-grid">
       {industries.map((industry) => (
@@ -79,4 +83,3 @@ export default function IndustriesSection({ industries = INDUSTRIES }) {
     </section>
   );
 }
-

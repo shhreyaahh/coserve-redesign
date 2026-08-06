@@ -1,31 +1,27 @@
-import Navbar from "./components/Navbar";
-import Hero, { LiveAISignalStrip } from "./components/Hero";
-import AIProducts from "./components/AIProducts";
-import About from "./components/About";
-import Clients from "./components/Clients";
-import Testimonials from "./components/Testimonials";
-import Industries from "./components/Industries";
-import Partners from "./components/Partners";
-import Insights from "./components/Insights";
-import CTASection from "./components/CtasSection";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import PageLayout from "./layouts/PageLayout";
+import Home from "./pages/Home";
+import Industries from "./pages/Industries";
+import IndustryPage from "./pages/IndustryPage";
+import AIProductsPage from "./pages/AIProducts";
+import Partners from "./pages/Partners";
+import PartnerDetailPage from "./pages/Partnersdetails";
 
 function App() {
   return (
-    <>
-      <LiveAISignalStrip />
-      <Navbar />
-      <Hero showSignalStrip={false} />
-      <AIProducts />
-      <About />
-      <Clients />
-      <Testimonials />
-      <Industries />
-      <Partners />
-      <Insights />
-      <CTASection />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<PageLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/industries" element={<Industries />} />
+          <Route path="/industries/:slug" element={<IndustryPage />} />
+          <Route path="/ai-products" element={<AIProductsPage />} />
+          <Route path="/partners" element={<Partners />} />
+          <Route path="/partners/:slug" element={<PartnerDetailPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -76,7 +76,7 @@ export default function AIProducts() {
         <MotionConfig reducedMotion="user">
           <div className="ai-products-grid">
             {products.map((product, index) => (
-              <motion.article
+<motion.article
                 className="ai-product-card"
                 key={product.title}
                 initial={{ opacity: 0, y: 24 }}
@@ -88,19 +88,25 @@ export default function AIProducts() {
                   delay: (index % 3) * 0.06,
                 }}
               >
-                <div className="ai-product-badge-row">
-                  <span className="ai-product-badge">{product.status}</span>
-                </div>
+                <a
+                  href="/ai-products"
+                  className="ai-product-card__link"
+                  aria-label={`View ${product.title}`}
+                >
+                  <div className="ai-product-badge-row">
+                    <span className="ai-product-badge">{product.status}</span>
+                  </div>
 
-                <div className="ai-product-title-wrap">
-                  <h3>{product.title}</h3>
-                  <p>{product.description}</p>
-                </div>
+                  <div className="ai-product-title-wrap">
+                    <h3>{product.title}</h3>
+                    <p>{product.description}</p>
+                  </div>
 
-                <a className="ai-product-link" href={product.href}>
-                  <span>Learn More</span>
-                  <span className="ai-product-arrow" aria-hidden="true">
-                    <ArrowIcon />
+                  <span className="ai-product-link">
+                    <span>Learn More</span>
+                    <span className="ai-product-arrow" aria-hidden="true">
+                      <ArrowIcon />
+                    </span>
                   </span>
                 </a>
               </motion.article>

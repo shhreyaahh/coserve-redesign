@@ -97,6 +97,9 @@
   --font-body: "Lato", sans-serif;
   --font-display: "Lato", sans-serif;
 
+  /* --- Navbar & live signal strip stacking --- */
+  --signal-strip-height: 38px;
+
   /* --- Dark navy family — Hero, Customer Success Stories, Industries We Serve
      No near-black exists in the brand book, so "dark" sections are built
      from Space Grey itself, darkened via color-mix rather than an
@@ -220,33 +223,125 @@ img {
   top: var(--signal-strip-height, 0px);
   left: 0;
   width: 100%;
-  height: 34px;
-  display: flex;
+  z-index: 100;
+  background: transparent;
+  margin-top: 0px;
+  padding-top: 0px;
+  height: 50px;
+   display: flex;
   align-items: center;
   z-index: 100;
   background: transparent;
   transition: 0.3s;
-  border-bottom: 1px solid transparent;
-}
-
-.cs-navbar.is-solid {
-  background: rgba(var(--ink-rgb), 0.82);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.cs-navbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  
 }
 
 .cs-navbar-logo {
-  font-size: 20px;
-  font-weight: 700;
+  color: var(--navy-text);
+}
+.cs-navbar-links a {
+  color: var(--navy-text);
+}
+.cs-navbar-links a:hover {
+  color: var(--mint-pop);
+}
+
+.cs-navbar-btn {
+  border: 1px solid rgba(65, 85, 100, 0.15);
+  color: var(--navy-text);
+  background: #fff;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+.cs-navbar-btn:hover {
+  background: var(--mint-pop);
+  color: #081114;
+  border-color: var(--mint-pop);
+}
+
+/* --- explicit solid variant (internal pages pass <Navbar solid />) --- */
+.cs-navbar.is-solid {
+  background: #fff;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(65, 85, 100, 0.08);
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.cs-navbar.is-solid .cs-navbar-inner {
+  height: 100%;
+}
+.cs-navbar.is-solid .cs-navbar-logo,
+.cs-navbar.is-solid .cs-navbar-links a {
+  color: var(--navy-text);
+}
+.cs-navbar.is-solid .cs-navbar-links a:hover {
+  color: var(--mint-pop);
+}
+.cs-navbar.is-solid .cs-navbar-btn {
+  border: 1px solid rgba(65, 85, 100, 0.15);
+  color: var(--navy-text);
+  background: #fff;
+}
+.cs-navbar.is-solid .cs-navbar-btn:hover {
+  background: var(--mint-pop);
+  color: #081114;
+  border-color: var(--mint-pop);
+}
+
+/* --- opt-in transparent state, add this class only on pages with a dark hero (e.g. home) --- */
+.cs-navbar.cs-navbar--transparent {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.cs-navbar.cs-navbar--transparent .cs-navbar-logo,
+.cs-navbar.cs-navbar--transparent .cs-navbar-links a {
+  color: var(--text-on-dark);
+}
+.cs-navbar.cs-navbar--transparent .cs-navbar-links a:hover {
+  color: #ffffff;
+}
+.cs-navbar.cs-navbar--transparent .cs-navbar-btn {
+  border: 1px solid rgba(255, 255, 255, 0.35);
   color: #fff;
-  text-decoration: none;
+  background: transparent;
+}
+.cs-navbar.cs-navbar--transparent .cs-navbar-btn:hover {
+  background: var(--mint-pop);
+  color: #0b1317;
+  border-color: var(--mint-pop);
+}
+
+/* --- when scrolled, transparent version goes back to the solid look (JS still just toggles .is-solid) --- */
+.cs-navbar.cs-navbar--transparent.is-solid {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(65, 85, 100, 0.08);
+}
+.cs-navbar.cs-navbar--transparent.is-solid .cs-navbar-logo,
+.cs-navbar.cs-navbar--transparent.is-solid .cs-navbar-links a {
+  color: var(--navy-text);
+}
+.cs-navbar.cs-navbar--transparent.is-solid .cs-navbar-links a:hover {
+  color: var(--mint-pop);
+}
+.cs-navbar.cs-navbar--transparent.is-solid .cs-navbar-btn {
+  border: 1px solid rgba(65, 85, 100, 0.15);
+  color: var(--navy-text);
+  background: #fff;
+}
+.cs-navbar.cs-navbar--transparent.is-solid .cs-navbar-btn:hover {
+  background: var(--mint-pop);
+  color: #081114;
+  border-color: var(--mint-pop);
+}
+
+.cs-navbar-inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .cs-navbar-links {
@@ -254,39 +349,6 @@ img {
   align-items: center;
   gap: 40px;
 }
-
-.cs-navbar-links a {
-  color: var(--text-on-dark);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.25s ease;
-}
-
-.cs-navbar-links a:hover {
-  color: #ffffff;
-}
-
-.cs-navbar-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 8px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-  transition: 0.25s;
-}
-
-.cs-navbar-btn:hover {
-  background: var(--mint-pop);
-  color: #0b1317;
-  border-color: var(--mint-pop);
-  transform: translateY(-2px);
-}
-
 /* ----------------------------------------------------------------------
    3.4 Hero & Live AI Signal Strip
 
@@ -730,18 +792,49 @@ img {
   background: var(--white);
   border: 1px solid var(--ink-border);
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
   box-shadow: 0 4px 18px rgba(var(--ink-rgb), 0.04);
+  will-change: transform;
 }
 
+/* The full-card link wraps all card content so the whole card is clickable.
+   It fills the card and mirrors the card's flex column so the content
+   (badge, body, arrow) still lays out exactly as before. */
+.ai-product-card__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  gap: 16px;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Premium hover: lift upward, soft mint outer glow, subtle shadow
+   intensify, and a gentle 1.04 scale on any icon/image inside the card. */
 .ai-product-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(var(--future-blue-rgb), 0.25);
+  transform: translateY(-8px);
+  border-color: rgba(var(--future-blue-rgb), 0.3);
   box-shadow:
-    0 0 0 1px rgba(var(--future-blue-rgb), 0.25),
-    0 12px 40px rgba(var(--future-blue-rgb), 0.18);
+    0 0 0 1px rgba(var(--future-blue-rgb), 0.3),
+    0 0 34px rgba(var(--future-blue-rgb), 0.22),
+    0 18px 48px rgba(var(--future-blue-rgb), 0.22);
+}
+
+.ai-product-card:hover .ai-product-icon,
+.ai-product-card:hover .ai-product-thumb,
+.ai-product-card:hover img {
+  transform: scale(1.04);
+}
+
+.ai-product-icon,
+.ai-product-thumb,
+.ai-product-card img {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .ai-product-badge-row {
@@ -1193,11 +1286,25 @@ img {
   width: 100%;
   overflow: hidden;
   padding: 0.5rem 0 2rem;
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.testimonials__viewport:active:not(.is-dragging) {
+  cursor: grabbing;
+}
+
+.testimonials__viewport.is-dragging {
+  cursor: grabbing;
 }
 
 .testimonials__track {
   display: flex;
   will-change: transform;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .testimonials__slot {
@@ -1640,6 +1747,738 @@ img {
 .industry-card:hover .industry-card__arrow,
 .industry-card:focus-visible .industry-card__arrow {
   transform: translateX(5px);
+}
+
+/* ==========================================================
+   INDUSTRIES LANDING PAGE
+========================================================== */
+
+.industries-page {
+  background: var(--white);
+}
+
+/* ---------- Hero ---------- */
+
+.industries-page__hero {
+  padding: 6rem 0 3rem;
+  background:
+    radial-gradient(circle at top, rgba(20, 215, 210, 0.08), transparent 45%),
+    linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  text-align: center;
+}
+
+.industries-page__hero .page-container {
+  max-width: 860px;
+}
+
+.industries-page__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+
+  color: var(--navy-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.industries-page__title {
+  font-size: clamp(2.3rem, 4vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--navy-text);
+  margin-bottom: 1.5rem;
+}
+
+.industries-page__description {
+  max-width: 720px;
+  margin: 0 auto;
+
+  color: var(--tint-blue-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* ---------- Grid ---------- */
+
+.industries-page__grid {
+  padding-bottom: 0px;
+}
+
+/* ---------- Why Coserve ---------- */
+
+.industries-page__why {
+  padding: clamp(5rem, 7vw, 7rem) 0;
+}
+
+.industries-page__why .page-container {
+  max-width: 1200px;
+  text-align: center;
+}
+
+.industries-page__why h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--mint-deep);
+  margin: 0 0 1.5rem;
+}
+
+.industries-page__why p {
+  max-width: 720px;
+  margin: 0 auto;
+
+  color: var(--tint-blue-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+  .industries-page__hero {
+    padding: 5rem 0 3.5rem;
+  }
+
+  .industries-page__title {
+    font-size: 2.4rem;
+  }
+
+  .industries-page__description,
+  .industries-page__why p {
+    font-size: 1rem;
+  }
+
+  .industries-page__why {
+    padding: 4rem 0;
+  }
+}
+
+/* ==========================================
+   INDUSTRY PAGE — REDESIGN
+   New markup hooks you'll need to add are
+   flagged with [NEW] in the comments.
+========================================== */
+
+.industry-page {
+  background: var(--white);
+}
+
+.industry-page section {
+  padding: 6rem 0;
+}
+
+.industry-page .page-container {
+  max-width: 1280px;
+}
+
+/* ------------------------------------------
+   SHARED SECTION HEADER
+   [NEW] wrap section titles like:
+   <span class="section-eyebrow">Challenges</span>
+   <h2 class="section-title">...</h2>
+------------------------------------------- */
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mint-pop);
+  margin-bottom: 1rem;
+}
+
+.section-eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--mint-pop);
+}
+
+.section-title {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  line-height: 1.15;
+  color: var(--navy-text);
+  max-width: 640px;
+  margin-bottom: 3.5rem;
+}
+
+/* ==========================================
+   INDUSTRY PAGE — BRAND REDESIGN
+   Palette pulled from brand sheet:
+   --space-grey   #415564  (primary dark)
+   --future-blue  #14d7d2  (primary accent / mint-pop)
+   --pale-blue    #e7f6fd
+   --sky-blue     #b7d6f1
+   --steel-blue   #6b8da6
+   --ice-teal     #ddf1f7
+   --soft-teal    #a7dce2
+   --deep-teal    #7ecfd4
+   --cream        #fbefe1
+   --sand         #f2e8da
+   --fog          #f1f3f4
+   --line-grey    #d8d8d8
+   Section rhythm tightened: 6rem → 3.5–4.5rem,
+   varied per section instead of uniform padding.
+========================================== */
+
+.industry-page {
+  --space-grey: #415564;
+  --future-blue: #14d7d2;
+  --pale-blue: #e7f6fd;
+  --sky-blue: #b7d6f1;
+  --steel-blue: #6b8da6;
+  --ice-teal: #ddf1f7;
+  --soft-teal: #a7dce2;
+  --deep-teal: #7ecfd4;
+  --cream: #fbefe1;
+  --sand: #f2e8da;
+  --fog: #f1f3f4;
+  --line-grey: #d8d8d8;
+
+  background: var(--white);
+}
+
+.industry-page section {
+  padding: 4rem 0;
+}
+
+.industry-page .page-container {
+  max-width: 1280px;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--space-grey);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--navy-text);
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+
+/* ==========================================
+   INDUSTRY PAGE — v3 FIX PASS
+   Sharp (radius:0) corners now ONLY on: hero
+   image, product chips, dark full-bleed bands.
+   Everything else (buttons, badges, challenge
+   cards) gets normal rounded treatment — that's
+   what reads as "designed" vs "cut off".
+========================================== */
+
+.industry-page {
+  --space-grey: #415564;
+  --future-blue: #14d7d2;
+  --pale-blue: #e7f6fd;
+  --sky-blue: #b7d6f1;
+  --steel-blue: #6b8da6;
+  --ice-teal: #ddf1f7;
+  --soft-teal: #a7dce2;
+  --deep-teal: #7ecfd4;
+  --cream: #fbefe1;
+  --sand: #f2e8da;
+  --fog: #f1f3f4;
+  --line-grey: #d8d8d8;
+
+  background: var(--white);
+}
+
+.industry-page section {
+  padding: 4rem 0;
+}
+
+.industry-page .page-container {
+  max-width: 1280px;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--space-grey);
+  margin-bottom: 0.75rem;
+  opacity: 1; /* was inheriting a fade-in animation stuck at 0 — pinned explicitly */
+}
+
+.section-title {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--navy-text);
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+  opacity: 1;
+}
+
+/* ==========================================
+   HERO — buttons now actually visible.
+========================================== */
+
+/* ==========================================
+   INDUSTRY PAGE — matched to real JSX
+========================================== */
+
+.industry-page {
+  --space-grey: #415564;
+  --future-blue: #14d7d2;
+  --pale-blue: #e7f6fd;
+  --steel-blue: #6b8da6;
+  --ice-teal: #ddf1f7;
+  --cream: #fbefe1;
+  --sand: #f2e8da;
+  --fog: #f1f3f4;
+  background: var(--white);
+}
+
+/* ---------- HERO ---------- */
+
+.industry-hero {
+  --split: 42%;
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 3rem;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.industry-hero__image {
+  position: absolute;
+  inset: 0;
+  left: var(--split);
+  width: calc(100% - var(--split));
+  z-index: 1;
+}
+
+.industry-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* dark blend now lives ON the image wrapper itself — can't be
+   wiped out by a stray .industry-hero background rule elsewhere */
+.industry-hero__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(90deg, #170f0b 0%, #170f0b 20%, transparent 55%);
+}
+
+.industry-hero__container {
+  position: relative;
+  z-index: 2;
+}
+
+.industry-hero__content {
+  max-width: var(--split); /* text never runs past where the dark zone begins */
+}
+
+.industry-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--space-grey);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+
+.industry-hero__content h1 {
+  font-size: clamp(3.2rem, 5vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--navy-text);
+  margin-bottom: 1.5rem;
+}
+
+.industry-hero__content p {
+  font-size: 1.1rem;
+  color: var(--steel-blue);
+  line-height: 1.8;
+  margin-bottom: 2.25rem;
+}
+
+.industry-hero__buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.industry-hero__buttons .btn-primary,
+.industry-hero__buttons .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9rem 1.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.25s ease;
+}
+
+.industry-hero__buttons .btn-primary {
+  background: var(--space-grey);
+  color: #fff;
+  border: 1px solid var(--space-grey);
+}
+
+.industry-hero__buttons .btn-primary:hover {
+  background: #34434f;
+}
+
+.industry-hero__buttons .btn-secondary {
+  background: transparent;
+  color: var(--navy-text);
+  border: 1px solid #d8d8d8;
+}
+
+.industry-hero__buttons .btn-secondary:hover {
+  border-color: var(--space-grey);
+  background: rgba(65, 85, 100, 0.05);
+}
+
+/* ---------- CHALLENGES ---------- */
+/* no index element in the markup, so the number is generated purely
+   in CSS via a counter — nothing extra to render in JSX */
+
+.industry-challenges {
+  background: var(--pale-blue);
+  padding: 4.5rem 0;
+}
+
+.industry-challenges h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  color: var(--navy-text);
+  margin-bottom: 2.5rem;
+}
+
+.industry-challenges-grid {
+  counter-reset: challenge;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.industry-challenge-card {
+  counter-increment: challenge;
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr 1.4fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem 1.75rem;
+  background: #fff;
+  border-radius: 12px;
+  border-left: 3px solid transparent;
+  transition: 0.25s ease;
+}
+
+.industry-challenge-card::before {
+  content: counter(challenge, decimal-leading-zero);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--space-grey);
+  color: var(--future-blue);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.industry-challenge-card:hover {
+  border-left-color: var(--future-blue);
+  box-shadow: 0 10px 30px rgba(65, 85, 100, 0.08);
+}
+
+.industry-challenge-card h3 {
+  color: var(--navy-text);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.industry-challenge-card p {
+  color: var(--steel-blue);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ---------- SOLUTIONS ---------- */
+
+.industry-solutions {
+  padding: 4.5rem 0;
+}
+
+.industry-solutions h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  color: var(--navy-text);
+  margin-bottom: 2.5rem;
+}
+
+.industry-solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 1.25rem;
+}
+
+.industry-solution-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1.75rem;
+  background: var(--fog);
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.industry-solution-card:hover {
+  transform: translateY(-4px);
+}
+
+.industry-solution-card:nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: var(--space-grey);
+  color: #fff;
+  padding: 2.25rem;
+}
+
+.industry-solution-card:nth-child(2) {
+  background: var(--ice-teal);
+}
+.industry-solution-card:nth-child(3) {
+  background: var(--cream);
+}
+.industry-solution-card:nth-child(4) {
+  background: var(--future-blue);
+}
+.industry-solution-card:nth-child(4) h3,
+.industry-solution-card:nth-child(4) p {
+  color: #06201f;
+}
+.industry-solution-card:nth-child(5) {
+  background: var(--sand);
+}
+
+.industry-solution-card h3 {
+  color: var(--navy-text);
+  font-size: 1.1rem;
+  margin: 0 0 0.4rem;
+}
+
+.industry-solution-card p {
+  color: var(--steel-blue);
+  line-height: 1.55;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ---------- PRODUCTS ---------- */
+
+.industry-products {
+  background: var(--space-grey);
+  padding: 4rem 0;
+}
+
+.industry-products h2 {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.industry-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.industry-product-card {
+  padding: 1.75rem 1.5rem;
+  background: var(--space-grey);
+  font-weight: 600;
+  color: #fff;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+.industry-product-card:hover {
+  background: var(--future-blue);
+  color: #06201f;
+}
+
+/* ---------- CASE STUDY ---------- */
+/* real structure: h3, p(challenge), p(result), button — all flat
+   siblings, so they're placed on a grid by position, not by a wrapper
+   div that doesn't exist in the markup */
+
+.industry-case-study {
+  padding: 5rem 0;
+}
+
+.industry-case-study h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  color: var(--navy-text);
+  margin-bottom: 2.5rem;
+}
+
+.industry-case-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 2rem;
+  padding: 3.5rem;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--space-grey),
+    #1c2b32 60%,
+    var(--future-blue) 170%
+  );
+  color: #fff;
+  overflow: hidden;
+}
+
+.industry-case-card::before {
+  content: "\201C";
+  position: absolute;
+  top: -1.5rem;
+  left: 1.5rem;
+  font-size: 9rem;
+  font-family: Georgia, serif;
+  color: rgba(255, 255, 255, 0.07);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.industry-case-card h3 {
+  grid-column: 1 / -1;
+  font-size: 1.7rem;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+  max-width: 600px;
+}
+
+.industry-case-card p {
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.industry-case-card p strong {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--future-blue);
+  margin-bottom: 0.4rem;
+}
+
+.industry-case-card button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 8px;
+  background: var(--future-blue);
+  color: #06201f;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .industry-hero {
+    min-height: auto;
+    padding-top: 9rem;
+  }
+  .industry-hero__image {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    order: -1;
+  }
+  .industry-hero__content {
+    max-width: 100%;
+  }
+
+  .industry-challenge-card {
+    grid-template-columns: 40px 1fr;
+  }
+  .industry-challenge-card h3 {
+    grid-column: 2;
+  }
+  .industry-challenge-card p {
+    grid-column: 1 / -1;
+  }
+
+  .industry-solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .industry-solution-card:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .industry-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .industry-case-card {
+    grid-template-columns: 1fr;
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .industry-products-grid,
+  .industry-solutions-grid {
+    grid-template-columns: 1fr;
+  }
+  .industry-solution-card:nth-child(1) {
+    grid-column: span 1;
+  }
 }
 
 /* ----------------------------------------------------------------------
@@ -2404,7 +3243,10 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ai-product-card {
+  .ai-product-card,
+  .ai-product-icon,
+  .ai-product-thumb,
+  .ai-product-card img {
     transition: none;
   }
 }
@@ -2540,6 +3382,11 @@ img {
 @media (prefers-reduced-motion: reduce) {
   .testimonial-card {
     transition: none;
+  }
+
+  .testimonials__viewport,
+  .testimonials__viewport.is-dragging {
+    cursor: default;
   }
 }
 
@@ -3088,5 +3935,1006 @@ img {
   .site-footer__social,
   .site-footer__link {
     transition: none;
+  }
+}
+
+/* ============================================================================
+   AI PRODUCTS PAGE — standalone listing page
+   Scoped entirely under aip- prefix, independent from the homepage's
+   .ai-products-section / .ai-product-card so nothing bleeds either way.
+   ============================================================================ */
+
+.ai-products-page {
+  background: var(--white);
+}
+
+/* ---------- HERO ---------- */
+
+.aip-hero {
+  padding: 9rem 0 4rem;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(20, 215, 210, 0.1),
+      transparent 45%
+    ),
+    linear-gradient(180deg, var(--tint-blue-pale) 0%, #fff 60%);
+  text-align: left;
+}
+
+.aip-hero__eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint-pop);
+  margin-bottom: 1.25rem;
+}
+
+.aip-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--navy-text);
+  margin: 0 0 1.5rem;
+  max-width: 780px;
+}
+
+.aip-hero__description {
+  max-width: 620px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--tint-blue-muted);
+  margin: 0 0 2.5rem;
+}
+
+.aip-hero__stats {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-on-light);
+}
+
+.aip-hero__stats strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy-text);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.aip-hero__stats span {
+  font-size: 0.85rem;
+  color: var(--tint-blue-muted);
+}
+
+/* ---------- TABS ---------- */
+
+.aip-tabs-section {
+  padding: 2rem 0 0;
+}
+
+.aip-tabs {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-on-light);
+  padding-bottom: 1.5rem;
+}
+
+.aip-tab {
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-on-light);
+  background: #fff;
+  color: var(--tint-blue-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.aip-tab:hover {
+  border-color: var(--mint-bright-line);
+  color: var(--navy-text);
+}
+
+.aip-tab.is-active {
+  background: var(--space-grey);
+  border-color: var(--space-grey);
+  color: #fff;
+}
+
+/* ---------- FEATURED ---------- */
+
+.aip-featured {
+  padding: 3.5rem 0 1rem;
+}
+
+.aip-featured__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.aip-featured__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  padding: 2.5rem;
+  border-radius: 18px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--tint-grey-pale);
+  transition: 0.3s ease;
+}
+
+.aip-featured__card:hover {
+  transform: translateY(-4px);
+}
+
+.aip-featured__card.is-primary {
+  background: var(--space-grey);
+  color: #fff;
+}
+
+.aip-featured__badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: var(--mint-badge-bg);
+  border: 1px solid var(--mint-badge-border);
+  color: var(--mint-badge-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.aip-featured__card.is-primary .aip-featured__badge {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--future-blue);
+}
+
+.aip-featured__card h3 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+}
+
+.aip-featured__card p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--tint-blue-muted);
+  margin: 0;
+}
+
+.aip-featured__card.is-primary p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.aip-featured__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-on-light);
+}
+
+.aip-featured__card.is-primary .aip-featured__footer {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.aip-featured__metric {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mint-pop);
+}
+
+.aip-featured__arrow {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s ease;
+}
+
+.aip-featured__card:hover .aip-featured__arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- GRID ---------- */
+
+.aip-grid-section {
+  padding: 3rem 0 4.5rem;
+}
+
+.aip-grid-section__title {
+  font-size: 1.4rem;
+  color: var(--navy-text);
+  margin: 0 0 2rem;
+}
+
+.aip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.aip-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  border: 1px solid var(--border-on-light);
+  border-radius: 14px;
+  background: #fff;
+  transition: 0.3s ease;
+}
+
+.aip-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--mint-bright-line);
+  box-shadow: var(--shadow-soft);
+}
+
+.aip-card__badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--mint-badge-bg);
+  border: 1px solid var(--mint-badge-border);
+  color: var(--mint-badge-text);
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.aip-card h3 {
+  font-size: 1.1rem;
+  color: var(--navy-text);
+  margin: 0 0 0.6rem;
+}
+
+.aip-card p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--tint-blue-muted);
+  margin: 0 0 1.5rem;
+  flex: 1;
+}
+
+.aip-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy-text);
+}
+
+.aip-card__arrow {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  color: var(--mint-pop);
+  transition: transform 0.25s ease;
+}
+
+.aip-card:hover .aip-card__arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- PROCESS ---------- */
+
+.aip-process {
+  padding: 4.5rem 0;
+  background: var(--tint-grey-pale);
+}
+
+.aip-process__title {
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  color: var(--navy-text);
+  margin: 0 0 2.5rem;
+}
+
+.aip-process__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.aip-step__num {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--mint-pop);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.aip-step h3 {
+  font-size: 1.2rem;
+  color: var(--navy-text);
+  margin: 0 0 0.6rem;
+}
+
+.aip-step p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--tint-blue-muted);
+  margin: 0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .aip-featured__grid,
+  .aip-grid,
+  .aip-process__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aip-hero__stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .aip-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+}
+
+/* ============================================================================
+   PARTNERS PAGE — standalone directory page
+   Scoped under ptn- prefix; independent from the homepage's
+   .partners / .ecosystem-* orbit component.
+   ============================================================================ */
+
+/* ============================================================================
+   PARTNERS PAGE — hover-linked roster, not a card grid
+   ============================================================================ */
+
+.partners-page {
+  background: var(--white);
+}
+
+/* ---------- HERO ---------- */
+
+.ptn-hero {
+  padding: 9rem 0 3rem;
+  border-bottom: 1px solid var(--border-on-light);
+}
+
+.ptn-hero__row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: end;
+}
+
+.ptn-hero__eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint-pop);
+  margin-bottom: 1.25rem;
+}
+
+.ptn-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--navy-text);
+  margin: 0;
+}
+
+.ptn-hero__description {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--tint-blue-muted);
+  max-width: 380px;
+  margin: 0;
+}
+
+/* ---------- ROSTER ---------- */
+
+.ptn-roster {
+  padding: 3rem 0 4.5rem;
+}
+
+.ptn-roster__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.ptn-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border-on-light);
+}
+
+.ptn-list__item {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.75rem 0.5rem;
+  border: none;
+  border-bottom: 1px solid var(--border-on-light);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.2s ease;
+}
+
+.ptn-list__item:hover,
+.ptn-list__item.is-active {
+  background: var(--tint-blue-pale);
+  padding-inline: 1.25rem;
+}
+
+.ptn-list__index {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--tint-blue-muted);
+  flex: 0 0 auto;
+}
+
+.ptn-list__item.is-active .ptn-list__index {
+  color: var(--mint-pop);
+}
+
+.ptn-list__name {
+  flex: 1;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--navy-text);
+  transition: color 0.2s ease;
+}
+
+.ptn-list__item.is-active .ptn-list__name {
+  color: var(--space-grey);
+}
+
+.ptn-list__category {
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tint-blue-muted);
+}
+
+/* mobile inline expansion — hidden on desktop, shown only under the
+   breakpoint where the sticky preview panel is hidden */
+.ptn-list__mobile-detail {
+  display: none;
+}
+
+/* ---------- PREVIEW PANEL (desktop) ---------- */
+
+.ptn-preview {
+  position: sticky;
+  top: 120px;
+}
+
+.ptn-preview__card {
+  padding: 3rem;
+  border-radius: 20px;
+  background: linear-gradient(
+    150deg,
+    var(--space-grey),
+    #1c2b32 75%,
+    var(--future-blue) 190%
+  );
+  color: #fff;
+}
+
+.ptn-preview__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  width: 90px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.ptn-preview__logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.ptn-preview__category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--future-blue);
+  margin-bottom: 0.75rem;
+}
+
+.ptn-preview__card h2 {
+  font-size: 1.7rem;
+  margin: 0 0 0.9rem;
+}
+
+.ptn-preview__card p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 1.75rem;
+}
+
+.ptn-preview__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--future-blue);
+}
+
+/* ---------- CLOSING STATEMENT ---------- */
+
+.ptn-statement {
+  padding: 5rem 0;
+  background: var(--tint-grey-pale);
+}
+
+.ptn-statement .page-container {
+  max-width: 1000px;
+}
+
+.ptn-statement p {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.3vw, 1.5rem);
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--navy-text);
+  margin: 0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .ptn-hero__row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .ptn-hero__description {
+    max-width: 100%;
+  }
+
+  .ptn-roster__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* sticky preview panel goes away entirely on mobile — replaced by
+     the inline accordion detail under each list item */
+  .ptn-preview {
+    display: none;
+  }
+
+  .ptn-list__item:hover,
+  .ptn-list__item.is-active {
+    padding-inline: 0.5rem;
+  }
+
+  .ptn-list__mobile-detail {
+    display: block;
+    padding: 0 0.5rem 1.5rem;
+    border-bottom: 1px solid var(--border-on-light);
+  }
+
+  .ptn-list__mobile-detail p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--tint-blue-muted);
+    margin: 0 0 0.75rem;
+  }
+
+  .ptn-list__mobile-detail a {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--navy-text);
+  }
+}
+
+/* ============================================================================
+   PARTNER DETAIL PAGE — standalone profile page
+===============================================================================
+*/
+
+.partner-page {
+  background: var(--white);
+}
+
+.pd-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint-pop);
+  margin-bottom: 1rem;
+}
+
+.pd-eyebrow--on-dark {
+  color: var(--future-blue);
+}
+
+.pd-section-title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  color: var(--navy-text);
+  margin: 0;
+  max-width: 720px;
+}
+
+/* ---------- HERO ---------- */
+
+.pd-hero {
+  padding: 9rem 0 4rem;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(20, 215, 210, 0.12), transparent 45%),
+    linear-gradient(180deg, var(--tint-blue-pale) 0%, #fff 65%);
+}
+
+.pd-hero__row {
+  display: flex;
+  justify-content: center;
+}
+
+.pd-hero__text {
+  max-width: 760px;
+  text-align: center;
+}
+
+.pd-hero__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1.75rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--border-on-light);
+  box-shadow: var(--shadow-soft);
+  padding: 1rem;
+}
+
+.pd-hero__logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.pd-hero__text h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--navy-text);
+  margin: 0 0 1.25rem;
+}
+
+.pd-hero__text p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--tint-blue-muted);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.pd-hero .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9rem 1.9rem;
+  border-radius: 8px;
+  background: var(--space-grey);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.pd-hero .btn-primary:hover {
+  background: #34434f;
+}
+
+/* ---------- KEY FEATURES ---------- */
+
+.pd-features {
+  padding: 4.5rem 0;
+}
+
+.pd-features .pd-section-title {
+  margin-bottom: 2.5rem;
+}
+
+.pd-features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pd-feature {
+  padding: 2rem;
+  border: 1px solid var(--border-on-light);
+  border-radius: 14px;
+  transition: 0.25s ease;
+}
+
+.pd-feature:hover {
+  border-color: var(--mint-bright-line);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-3px);
+}
+
+.pd-feature__num {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--mint-pop);
+  margin-bottom: 1rem;
+}
+
+.pd-feature h3 {
+  font-size: 1.1rem;
+  color: var(--navy-text);
+  margin: 0 0 0.6rem;
+}
+
+.pd-feature p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--tint-blue-muted);
+  margin: 0;
+}
+
+/* ---------- BRANDS (dark band around existing logo-marquee) ---------- */
+
+.pd-brands {
+  padding: 4rem 0;
+  background: var(--surface-dark-900);
+  text-align: center;
+}
+
+.pd-brands .pd-eyebrow {
+  margin-bottom: 2rem;
+}
+
+/* ---------- INDUSTRIES ---------- */
+
+.pd-industries {
+  padding: 4.5rem 0;
+}
+
+.pd-industries__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.pd-industries .btn-secondary {
+  flex-shrink: 0;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-on-light);
+  color: var(--navy-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.pd-industries .btn-secondary:hover {
+  border-color: var(--space-grey);
+  background: rgba(65, 85, 100, 0.05);
+}
+
+.pd-industries__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.pd-industry-chip {
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-on-light);
+  background: var(--tint-grey-pale);
+  color: var(--navy-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.pd-industry-chip:hover {
+  background: var(--space-grey);
+  border-color: var(--space-grey);
+  color: #fff;
+}
+
+/* ---------- EXPERTISE ---------- */
+
+.pd-expertise {
+  padding: 4.5rem 0;
+  background: var(--tint-blue-pale);
+}
+
+.pd-expertise__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.pd-expertise__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(65, 85, 100, 0.15);
+}
+
+.pd-expertise__list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(65, 85, 100, 0.15);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--navy-text);
+}
+
+/* ---------- WHO SHOULD CONSIDER (FIT) ---------- */
+
+.pd-fit {
+  padding: 4.5rem 0;
+}
+
+.pd-fit__row {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.pd-fit p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--tint-blue-muted);
+  margin-top: 1.25rem;
+}
+
+.pd-fit__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pd-fit__list li {
+  position: relative;
+  padding: 1.25rem 1.5rem 1.25rem 3rem;
+  border-radius: 12px;
+  background: var(--tint-grey-pale);
+  font-weight: 600;
+  color: var(--navy-text);
+  font-size: 0.95rem;
+}
+
+.pd-fit__list li::before {
+  content: "✓";
+  position: absolute;
+  left: 1.25rem;
+  color: var(--mint-pop);
+  font-weight: 700;
+}
+
+/* ---------- SOLUTIONS (9-point problem/solution list) ---------- */
+
+.pd-solutions {
+  padding: 4.5rem 0;
+  background: var(--space-grey);
+  color: #fff;
+}
+
+.pd-solutions .pd-eyebrow {
+  color: var(--future-blue);
+}
+
+.pd-solutions .pd-section-title {
+  color: #fff;
+  margin-bottom: 3rem;
+}
+
+.pd-solutions__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-solution-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 1.75rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pd-solution-row__num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--future-blue);
+  opacity: 0.5;
+}
+
+.pd-solution-row h3 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.pd-solution-row p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+  max-width: 640px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .pd-features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pd-expertise__row,
+  .pd-fit__row {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-expertise__list {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-industries__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pd-solution-row {
+    grid-template-columns: 44px 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pd-features__grid {
+    grid-template-columns: 1fr;
   }
 }

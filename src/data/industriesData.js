@@ -24,24 +24,93 @@ const INDUSTRIES = [
   },
   {
     id: "manufacturing",
+    slug: "manufacturing",
+
     title: "Manufacturing",
+
     description:
       "Connecting shop floor to top floor with modern ERP and real-time visibility.",
+
     href: "/industries/manufacturing",
+
     image: manufacturingImg,
+
     position: "center center",
+
+    hero: {
+      badge: "Manufacturing",
+      title: "AI-Powered Manufacturing Transformation",
+      description:
+        "Modernize manufacturing with AI, ERP modernization and intelligent automation.",
+    },
+
+    challenges: [
+      {
+        title: "Legacy ERP Systems",
+        description:
+          "Disconnected systems slow operations and reduce visibility.",
+      },
+      {
+        title: "Manual Processes",
+        description: "Repetitive workflows increase operational costs.",
+      },
+      {
+        title: "Limited Visibility",
+        description: "Lack of real-time production insights.",
+      },
+      {
+        title: "Supply Chain Complexity",
+        description: "Manage suppliers, inventory and production efficiently.",
+      },
+    ],
+
+    solutions: [
+      {
+        title: "ERP Modernization",
+        description:
+          "Upgrade legacy ERP platforms without disrupting business.",
+      },
+      {
+        title: "AI Workflow Automation",
+        description: "Automate repetitive enterprise processes.",
+      },
+      {
+        title: "Salesforce CRM",
+        description: "Connect sales, service and operations.",
+      },
+      {
+        title: "Manufacturing Intelligence",
+        description: "Gain real-time operational insights.",
+      },
+    ],
+
+    products: [
+      "Invoice Automation",
+      "SmartProj",
+      "Embeddable AI Agents",
+      "ERP AI Readiness Audit",
+    ],
+
+    caseStudy: {
+      title: "Leading Manufacturing Enterprise",
+      challenge: "Manual invoice processing",
+      result: "65% Faster Processing",
+      button: "Unlock Full Story",
+    },
   },
   {
     id: "healthcare",
+    slug: "manufacturing",
     title: "Healthcare",
     description:
       "Streamlining compliance, operations and patient-centered platforms.",
-    href: "/industries/healthcare",
+    href: "/industries/manufacturing",
     image: healthcareImg,
     position: "center center",
   },
   {
     id: "retail-distribution",
+    slug: "retail-distribution",
     title: "Retail & Distribution",
     description:
       "Unifying inventory, fulfillment and customer data across every channel.",
@@ -51,6 +120,7 @@ const INDUSTRIES = [
   },
   {
     id: "pharma-life-sciences",
+    slug: "pharma-life-sciences",
     title: "Pharma & Life Sciences",
     description:
       "Supporting regulated environments with traceable, audit-ready systems.",
@@ -60,6 +130,7 @@ const INDUSTRIES = [
   },
   {
     id: "construction-real-estate",
+    slug: "construction-real-estate",
     title: "Construction & Real Estate",
     description:
       "Bringing project, asset and financial data into a single view.",
