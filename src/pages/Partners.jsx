@@ -18,7 +18,7 @@ export default function PartnersPage() {
               <span className="ptn-hero__eyebrow">Partners</span>
               <h1 className="ptn-hero__title">
                 The platforms
-                <br />
+            
                 we build on.
               </h1>
             </div>

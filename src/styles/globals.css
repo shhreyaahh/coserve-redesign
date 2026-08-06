@@ -263,7 +263,7 @@ img {
 
 /* --- explicit solid variant (internal pages pass <Navbar solid />) --- */
 .cs-navbar.is-solid {
-  background: var(--tint-blue-muted);
+  background: var(--space-grey);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(65, 85, 100, 0.08);
   margin-top: -22px;
@@ -4345,7 +4345,7 @@ img {
 /* ---------- HERO ---------- */
 
 .ptn-hero {
-  padding: 9rem 0 3rem;
+  padding: 9rem 0 2rem;
   border-bottom: 1px solid var(--border-on-light);
 }
 
@@ -4367,12 +4367,12 @@ img {
 }
 
 .ptn-hero__title {
+  margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5vw, 4.4rem);
-  line-height: 1;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--navy-text);
-  margin: 0;
 }
 
 .ptn-hero__description {
