@@ -62,13 +62,13 @@ export const AI_PRODUCT_HIGHLIGHTS = [
     id: "invoice-automation",
     label: "Invoice Automation",
     status: "Live · Multi-country",
-    href: "/ai-products/invoice-automation/",
+    href: "/ai-products",
   },
   {
     id: "agentforce-healthcloud",
     label: "Agentforce HealthCloud",
     status: "Live · First in region",
-    href: "/ai-products/agentforce-healthcloud/",
+    href: "/ai-products",
   },
 ];
 
@@ -85,10 +85,10 @@ export const HERO_PILLARS = [
     headline: "AI, purpose-built for the way your enterprise actually works.",
     supporting:
       "Coserve designs and runs AI that maps directly to your business outcomes — starting with the platforms your teams depend on every day.",
-    primaryCta: "Explore AI Products",
-    primaryHref: "/ai-products/",
+primaryCta: "Explore AI Products",
+    primaryHref: "/ai-products",
     secondaryCta: "Book a Working Session",
-    secondaryHref: "/contact/",
+    secondaryHref: "#",
   },
   {
     id: "automate",
@@ -98,9 +98,9 @@ export const HERO_PILLARS = [
     supporting:
       "Intelligent automation across ERP and CRM removes manual effort, exceptions and rework, freeing your people to focus on higher-value work.",
     primaryCta: "Explore AI Products",
-    primaryHref: "/ai-products/",
+    primaryHref: "/ai-products",
     secondaryCta: "See Automation in Action",
-    secondaryHref: "/contact/",
+    secondaryHref: "#",
   },
   {
     id: "embrace",
@@ -110,9 +110,9 @@ export const HERO_PILLARS = [
     supporting:
       "We embed AI into enterprise platforms with the security, governance and change management modern organizations demand.",
     primaryCta: "Explore AI Products",
-    primaryHref: "/ai-products/",
+    primaryHref: "/ai-products",
     secondaryCta: "Talk to an Expert",
-    secondaryHref: "/contact/",
+    secondaryHref: "#",
   },
   {
     id: "transform",
@@ -122,9 +122,9 @@ export const HERO_PILLARS = [
     supporting:
       "From ERP modernization to agent-first workflows, Coserve turns technology investment into tangible, measurable business results.",
     primaryCta: "Explore AI Products",
-    primaryHref: "/ai-products/",
+    primaryHref: "/ai-products",
     secondaryCta: "Book a Working Session",
-    secondaryHref: "/contact/",
+    secondaryHref: "#",
   },
 ];
 

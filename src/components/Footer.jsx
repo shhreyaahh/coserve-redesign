@@ -10,17 +10,17 @@ const FOOTER_COLUMNS = [
   {
     heading: "Company",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Leadership", href: "/leadership" },
-      { label: "Careers", href: "/careers" },
-      { label: "Contact", href: "/contact" },
+      { label: "About", href: "#" },
+      { label: "Leadership", href: "#" },
+      { label: "Careers", href: "#" },
+      { label: "Contact", href: "#" },
     ],
   },
   {
     heading: "Solutions",
     links: [
       { label: "AI Products", href: "/ai-products" },
-      { label: "Services", href: "/services" },
+      { label: "Services", href: "#" },
       { label: "Industries", href: "/industries" },
       { label: "Partners", href: "/partners" },
     ],
@@ -28,10 +28,10 @@ const FOOTER_COLUMNS = [
   {
     heading: "Resources",
     links: [
-      { label: "Insights", href: "/insights" },
-      { label: "Case Studies", href: "/case-studies" },
-      { label: "Whitepapers", href: "/whitepapers" },
-      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Insights", href: "#" },
+      { label: "Case Studies", href: "#" },
+      { label: "Whitepapers", href: "#" },
+      { label: "Privacy Policy", href: "#" },
     ],
   },
 ];
@@ -52,9 +52,9 @@ const FOOTER_SOCIALS = [
 ];
 
 const FOOTER_LEGAL_LINKS = [
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms", href: "/terms" },
-  { label: "Cookies", href: "/cookies" },
+  { label: "Privacy Policy", href: "#" },
+  { label: "Terms", href: "#" },
+  { label: "Cookies", href: "#" },
 ];
 
 function LinkedInIcon() {

@@ -7,6 +7,7 @@ import IndustryPage from "./pages/IndustryPage";
 import AIProductsPage from "./pages/AIProducts";
 import Partners from "./pages/Partners";
 import PartnerDetailPage from "./pages/Partnersdetails";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/ai-products" element={<AIProductsPage />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/partners/:slug" element={<PartnerDetailPage />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

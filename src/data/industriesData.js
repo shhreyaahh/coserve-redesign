@@ -4,6 +4,13 @@
  * sets the object-position focal point so the equal-size cards keep
  * visually distinct hero crops (skyline reads from the top, a machine
  * close-up from the center, etc.).
+ *
+ * NOTE: Only the Manufacturing detail page is currently built. All six
+ * industry cards route to the manufacturing page (slug + href point to
+ * "manufacturing"). The manufacturing entry MUST stay first in this array,
+ * because IndustryPage.jsx looks up by slug and `.find()` returns the first
+ * match — the manufacturing object carries all the detail data (hero,
+ * challenges, solutions, products, caseStudy).
  */
 import manufacturingImg from "../assets/manufacturing.png";
 import aerospaceImg from "../assets/aerospace.png";
@@ -15,35 +22,29 @@ import constructionImg from "../assets/construction&realestate.png";
 const INDUSTRIES = [
   {
     id: "aerospace-defense",
+    slug: "manufacturing",
     title: "Aerospace & Defense",
     description:
       "Modernizing mission-critical systems for aerospace and defense programs.",
-    href: "/industries/aerospace-defense",
+    href: "/industries/manufacturing",
     image: aerospaceImg,
     position: "center 28%",
   },
   {
     id: "manufacturing",
     slug: "manufacturing",
-
     title: "Manufacturing",
-
     description:
       "Connecting shop floor to top floor with modern ERP and real-time visibility.",
-
     href: "/industries/manufacturing",
-
     image: manufacturingImg,
-
     position: "center center",
-
     hero: {
       badge: "Manufacturing",
       title: "AI-Powered Manufacturing Transformation",
       description:
         "Modernize manufacturing with AI, ERP modernization and intelligent automation.",
     },
-
     challenges: [
       {
         title: "Legacy ERP Systems",
@@ -63,7 +64,6 @@ const INDUSTRIES = [
         description: "Manage suppliers, inventory and production efficiently.",
       },
     ],
-
     solutions: [
       {
         title: "ERP Modernization",
@@ -83,14 +83,12 @@ const INDUSTRIES = [
         description: "Gain real-time operational insights.",
       },
     ],
-
     products: [
       "Invoice Automation",
       "SmartProj",
       "Embeddable AI Agents",
       "ERP AI Readiness Audit",
     ],
-
     caseStudy: {
       title: "Leading Manufacturing Enterprise",
       challenge: "Manual invoice processing",
@@ -110,31 +108,31 @@ const INDUSTRIES = [
   },
   {
     id: "retail-distribution",
-    slug: "retail-distribution",
+    slug: "manufacturing",
     title: "Retail & Distribution",
     description:
       "Unifying inventory, fulfillment and customer data across every channel.",
-    href: "/industries/retail-distribution",
+    href: "/industries/manufacturing",
     image: retailImg,
     position: "center center",
   },
   {
     id: "pharma-life-sciences",
-    slug: "pharma-life-sciences",
+    slug: "manufacturing",
     title: "Pharma & Life Sciences",
     description:
       "Supporting regulated environments with traceable, audit-ready systems.",
-    href: "/industries/pharma-life-sciences",
+    href: "/industries/manufacturing",
     image: pharmaImg,
     position: "center center",
   },
   {
     id: "construction-real-estate",
-    slug: "construction-real-estate",
+    slug: "manufacturing",
     title: "Construction & Real Estate",
     description:
       "Bringing project, asset and financial data into a single view.",
-    href: "/industries/construction-real-estate",
+    href: "/industries/manufacturing",
     image: constructionImg,
     position: "center 30%",
   },

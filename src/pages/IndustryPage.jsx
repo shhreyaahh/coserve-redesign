@@ -14,22 +14,26 @@ export default function IndustryPage() {
   return (
     <main className="industry-page">
       <section className="industry-hero">
-  <div className="industry-hero__image">
-    <img src={industry.image} alt={industry.title} />
-  </div>
+        <div className="industry-hero__image">
+          <img src={industry.image} alt={industry.title} />
+        </div>
 
-  <div className="page-container industry-hero__container">
-    <div className="industry-hero__content">
-      <span className="industry-hero__badge">{industry.hero.badge}</span>
-      <h1>{industry.hero.title}</h1>
-      <p>{industry.hero.description}</p>
-      <div className="industry-hero__buttons">
-        <a href="/contact" className="btn-primary">Book a Session</a>
-        <a href="/products" className="btn-secondary">Explore Products</a>
-      </div>
-    </div>
-  </div>
-</section>
+        <div className="page-container industry-hero__container">
+          <div className="industry-hero__content">
+            <span className="industry-hero__badge">{industry.hero.badge}</span>
+            <h1>{industry.hero.title}</h1>
+            <p>{industry.hero.description}</p>
+            <div className="industry-hero__buttons">
+              <a href="#" className="btn-primary">
+                Book a Session
+              </a>
+              <a href="/ai-products" className="btn-secondary">
+                Explore Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="industry-challenges">
         <div className="page-container">

@@ -51,7 +51,7 @@ export default function CTASection() {
         </p>
 
         <div className="cta__actions">
-          <a href="/contact" className="cta-btn cta-btn--primary">
+<a href="#" className="cta-btn cta-btn--primary">
             Book a Working Session
             <span className="cta-btn__arrow" aria-hidden="true">→</span>
           </a>

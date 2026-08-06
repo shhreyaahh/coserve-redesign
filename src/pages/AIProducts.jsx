@@ -9,8 +9,8 @@ const PRODUCTS = [
     title: "Invoice Automation",
     description:
       "Automates invoice intake, validation, exception routing and reconciliation across countries to reduce manual effort.",
-    metric: "65% faster processing",
-    href: "/ai-products/invoice-automation/",
+metric: "65% faster processing",
+    href: "/ai-products",
   },
   {
     status: "Live · First in Region",
@@ -18,8 +18,8 @@ const PRODUCTS = [
     title: "Agentforce HealthCloud",
     description:
       "Delivers patient-first healthcare workflows with AI-assisted case management, service orchestration and intelligent data access.",
-    metric: "First deployment in region",
-    href: "/ai-products/agentforce-healthcloud/",
+metric: "First deployment in region",
+    href: "/ai-products",
   },
   {
     status: "Live",
@@ -27,8 +27,8 @@ const PRODUCTS = [
     title: "SmartProj",
     description:
       "Connects project delivery teams with intelligent planning, work tracking and enterprise reporting built for measurable execution.",
-    metric: "Real-time delivery visibility",
-    href: "/ai-products/smartproj/",
+metric: "Real-time delivery visibility",
+    href: "/ai-products",
   },
   {
     status: "Deployable",
@@ -36,8 +36,8 @@ const PRODUCTS = [
     title: "Embeddable AI Agents",
     description:
       "Provides secure, modular AI agents that can be embedded into enterprise workflows, customer journeys and internal operations.",
-    metric: "Deploy in days, not months",
-    href: "/ai-products/embeddable-ai-agents/",
+metric: "Deploy in days, not months",
+    href: "/ai-products",
   },
   {
     status: "Framework · Fixed-price",
@@ -45,8 +45,8 @@ const PRODUCTS = [
     title: "ERP AI Readiness Audit",
     description:
       "Assesses platform readiness, automation opportunities and transformation priorities through a structured fixed-price advisory framework.",
-    metric: "Fixed-price, fixed-timeline",
-    href: "/ai-products/erp-ai-readiness-audit/",
+metric: "Fixed-price, fixed-timeline",
+    href: "/ai-products",
   },
 ];
 

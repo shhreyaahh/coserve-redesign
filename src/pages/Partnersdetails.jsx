@@ -58,7 +58,7 @@ export default function PartnerDetailPage() {
             <h1>{heroTitle}</h1>
             <p>{heroDescription}</p>
 
-            <a className="btn-primary" href="/contact">
+<a className="btn-primary" href="#">
               Get In Touch
             </a>
           </div>
@@ -98,7 +98,7 @@ export default function PartnerDetailPage() {
                   Serving unique business requirements across industries
                 </h2>
               </div>
-              <a className="btn-secondary" href="/contact">
+<a className="btn-secondary" href="#">
                 Request a Demo
               </a>
             </div>

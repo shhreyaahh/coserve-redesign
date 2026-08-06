@@ -1,12 +1,24 @@
-# COSERVE Redesign — Interaction & UX Enhancements
+# coserve-redesign — Fix Broken Links & Routing
 
-Plan approved: add animation/UX only. **Do not delete existing code, design, colors, typography, spacing, layout, or responsiveness.**
+## Root Cause
+Almost every nav/footer/CTA link pointed to a route that did not exist, and
+`BrowserRouter` rendered a **blank page** for unmatched paths (no catch-all 404).
 
-## Steps
+## Tasks
 
-- [x] 1. AI Product Cards — add premium hover animation (lift, mint glow, shadow intensify, icon/image scale) in `globals.css` (3.5).
-- [x] 2. Testimonials — add drag/swipe interaction (desktop grab/grabbing cursor, mobile swipe, momentum easing, text-selection prevention) in `Testimonials.jsx`.
-- [x] 3. Testimonials — add grab/grabbing cursor + touch-action + user-select CSS in `globals.css` (3.8 / 4.6).
-- [x] 4. Industry Cards — already implemented (image zoom 1.05, overlay fade, card lift). No changes needed.
-- [x] 5. Verify reduced-motion support preserved.
-- [x] 6. Run build to confirm no compile errors.
+- [x] 1. `src/data/industriesData.js` — all 6 industries route to manufacturing
+- [x] 2. `src/components/Navbar.jsx` — missing-route links set to `#`
+- [x] 3. `src/components/Footer.jsx` — missing-route + legal links set to `#`
+- [x] 4. `src/components/CtaSection.jsx` — `/contact` → `#`
+- [x] 5. `src/components/Hero.jsx` — `/contact/` → `#`, product hrefs → `/ai-products`
+- [x] 6. `src/pages/AIProducts.jsx` — product hrefs → `/ai-products`
+- [x] 7. `src/pages/IndustryPage.jsx` — `/products` → `/ai-products`, `/contact` → `#`
+- [x] 8. `src/pages/Partnersdetails.jsx` — `/contact` → `#`
+- [x] 9. `src/pages/NotFound.jsx` — created 404 page
+- [x] 10. `src/App.jsx` — added `*` catch-all 404 route
+- [x] 11. Build & verify (`npm run build`) — passes
+
+## Vercel / Git note
+Repo is up to date with `origin/main`. If production isn't updating, confirm in
+Vercel that the **Production Branch** is set to `main` (not `agents/...`).
+</content>
