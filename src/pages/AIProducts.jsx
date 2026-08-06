@@ -91,29 +91,31 @@ export default function AIProductsPage() {
       <main className="ai-products-page">
         {/* ---------- HERO ---------- */}
         <section className="aip-hero">
-          <div className="page-container">
-            <span className="aip-hero__eyebrow">AI &amp; Products</span>
-            <h1 className="aip-hero__title">
-              AI Products Built for
-              <br />
-              Enterprise Transformation
-            </h1>
-            <p className="aip-hero__description">
-              From invoice automation to embeddable agents — explore the AI
-              products Coserve has shipped into live production environments
-              across industries.
-            </p>
+          <div className="page-container aip-hero__row">
+            <div className="aip-hero__content">
+              <span className="aip-hero__eyebrow">AI &amp; Products</span>
+              <h1 className="aip-hero__title">
+                AI Products Built for
+                <br />
+                Enterprise Transformation
+              </h1>
+              <p className="aip-hero__description">
+                From invoice automation to embeddable agents — explore the AI
+                products Coserve has shipped into live production environments
+                across industries.
+              </p>
+            </div>
 
             <div className="aip-hero__stats">
-              <div>
+              <div className="aip-hero__stat">
                 <strong>5</strong>
                 <span>Products in market</span>
               </div>
-              <div>
+              <div className="aip-hero__stat">
                 <strong>3</strong>
                 <span>Live in production</span>
               </div>
-              <div>
+              <div className="aip-hero__stat">
                 <strong>Multi</strong>
                 <span>Country deployments</span>
               </div>

@@ -228,26 +228,28 @@ img {
   margin-top: 0px;
   padding-top: 0px;
   height: 50px;
-   display: flex;
+  display: flex;
   align-items: center;
   z-index: 100;
   background: transparent;
   transition: 0.3s;
-  
+  margin-top: -22px;
+  padding-top: 35px;
+  padding-bottom: 35px;
 }
 
 .cs-navbar-logo {
   color: var(--navy-text);
 }
 .cs-navbar-links a {
-  color: var(--navy-text);
+  color: #fff;
 }
 .cs-navbar-links a:hover {
   color: var(--mint-pop);
 }
 
 .cs-navbar-btn {
-  border: 1px solid rgba(65, 85, 100, 0.15);
+  border: 5px solid rgba(65, 85, 100, 0.15);
   color: var(--navy-text);
   background: #fff;
   padding: 8px 20px;
@@ -261,11 +263,12 @@ img {
 
 /* --- explicit solid variant (internal pages pass <Navbar solid />) --- */
 .cs-navbar.is-solid {
-  background: #fff;
+  background: var(--tint-blue-muted);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(65, 85, 100, 0.08);
-  margin-top: 0px;
-  padding-top: 0px;
+  margin-top: -22px;
+  padding-top: 35px;
+  padding-bottom: 35px;
 }
 
 .cs-navbar.is-solid .cs-navbar-inner {
@@ -273,7 +276,7 @@ img {
 }
 .cs-navbar.is-solid .cs-navbar-logo,
 .cs-navbar.is-solid .cs-navbar-links a {
-  color: var(--navy-text);
+  color: #fff;
 }
 .cs-navbar.is-solid .cs-navbar-links a:hover {
   color: var(--mint-pop);
@@ -3951,7 +3954,7 @@ img {
 /* ---------- HERO ---------- */
 
 .aip-hero {
-  padding: 9rem 0 4rem;
+  padding: 9rem 0 1rem;
   background:
     radial-gradient(
       circle at 20% 20%,
@@ -3960,6 +3963,18 @@ img {
     ),
     linear-gradient(180deg, var(--tint-blue-pale) 0%, #fff 60%);
   text-align: left;
+}
+
+/* Two-column hero: left = eyebrow/title/description, right = stats */
+.aip-hero__row {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.aip-hero__content {
+  min-width: 0;
 }
 
 .aip-hero__eyebrow {
@@ -3974,17 +3989,18 @@ img {
 
 .aip-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--navy-text);
   margin: 0 0 1.5rem;
   max-width: 780px;
+  
 }
 
 .aip-hero__description {
   max-width: 620px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.8;
   color: var(--tint-blue-muted);
   margin: 0 0 2.5rem;
@@ -3992,14 +4008,20 @@ img {
 
 .aip-hero__stats {
   display: flex;
-  gap: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-on-light);
+  flex-direction: column;
+  gap: 2rem;
+  padding-left: 3rem;
+  border-left: 1px solid var(--border-on-light);
+}
+
+.aip-hero__stat {
+  display: flex;
+  flex-direction: column;
 }
 
 .aip-hero__stats strong {
   display: block;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--navy-text);
   line-height: 1;
@@ -4273,15 +4295,29 @@ img {
 /* ---------- RESPONSIVE ---------- */
 
 @media (max-width: 900px) {
+  .aip-hero__row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .aip-hero__stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    padding-top: 2rem;
+    border-left: none;
+    border-top: 1px solid var(--border-on-light);
+  }
+
+  .aip-founder-hero__stats-wrapper {
+    grid-template-columns: 1fr;
+  }
+
   .aip-featured__grid,
   .aip-grid,
   .aip-process__grid {
     grid-template-columns: 1fr;
-  }
-
-  .aip-hero__stats {
-    flex-wrap: wrap;
-    gap: 1.5rem;
   }
 }
 
@@ -4596,7 +4632,11 @@ img {
 .pd-hero {
   padding: 9rem 0 4rem;
   background:
-    radial-gradient(circle at 85% 15%, rgba(20, 215, 210, 0.12), transparent 45%),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(20, 215, 210, 0.12),
+      transparent 45%
+    ),
     linear-gradient(180deg, var(--tint-blue-pale) 0%, #fff 65%);
 }
 
