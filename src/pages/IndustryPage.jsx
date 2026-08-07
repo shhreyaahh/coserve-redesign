@@ -5,7 +5,7 @@ import CTASection from "../components/CtaSection";
 export default function IndustryPage() {
   const { slug } = useParams();
 
-  const industry = INDUSTRIES.find((item) => item.slug === slug);
+  const industry = INDUSTRIES.find((item) => item.slug === slug && item.hero);
 
   if (!industry) {
     return <h1>Industry Not Found</h1>;

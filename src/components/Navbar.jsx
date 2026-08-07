@@ -25,16 +25,16 @@ export default function Navbar({ solid = false, transparent = false }) {
           coServe
         </a>
 
-<nav className="cs-navbar-links">
-          <a href="#">About Us</a>
+        <nav className="cs-navbar-links">
+          <a href="/about">About Us</a>
           <a href="/industries">Industries</a>
           <a href="/ai-products">AI &amp; Products</a>
           <a href="/partners">Partners</a>
-          <a href="#">Insights</a>
-          <a href="#">Careers</a>
+          <a href="/insights">Insights</a>
+          <a href="/careers">Careers</a>
         </nav>
 
-        <a href="#" className="cs-navbar-btn">
+        <a href="/contact" className="cs-navbar-btn">
           Book a Session
           <IconArrowRight size={16} />
         </a>

@@ -161,7 +161,7 @@
   --story-purpose: #44a48d;
   --story-vision: #6286d8;
   --story-vision-deep: var(--space-grey);
-  --story-values: #b6def1;
+  --story-values: #a2c2d2;
 }
 
 /* ============================================================================
@@ -1136,8 +1136,9 @@ img {
 }
 
 .trusted-clients__heading {
-  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 4vw, 2.4rem);
+  font-weight: 500;
   margin: 0 0 0.75rem;
   letter-spacing: -0.01em;
 }
@@ -1272,7 +1273,7 @@ img {
 
 .testimonials__heading {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.01em;
   margin: 0 0 0.85rem;
 }
@@ -1524,7 +1525,7 @@ img {
 
 .industries__heading {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.01em;
   margin: 0 0 0.85rem;
   color: var(--ind-navy);
@@ -1780,7 +1781,7 @@ img {
   justify-content: center;
   padding: 0.45rem 1rem;
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 
   color: var(--navy-text);
   font-size: 0.82rem;
@@ -1795,6 +1796,7 @@ img {
   letter-spacing: -0.03em;
   color: var(--navy-text);
   margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 .industries-page__description {
@@ -2058,12 +2060,11 @@ img {
 .industry-hero {
   --split: 42%;
   position: relative;
-  min-height: 80vh;
+  min-height: 100vh; /* was 80vh */
   display: flex;
   align-items: center;
   padding: 8rem 0 3rem;
   overflow: hidden;
-  background: #ffffff;
 }
 
 .industry-hero__image {
@@ -2083,13 +2084,17 @@ img {
 
 /* dark blend now lives ON the image wrapper itself — can't be
    wiped out by a stray .industry-hero background rule elsewhere */
+/* was blending to a hardcoded dark tone (#170f0b) that doesn't match
+   anything else on the page — switched to blend into the hero's own
+   background color instead, same logic as the About page rows: the
+   gradient fades the image into whatever solid color sits behind the
+   text, not into an arbitrary color of its own. */
 .industry-hero__image::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(90deg, #170f0b 0%, #170f0b 20%, transparent 55%);
 }
 
 .industry-hero__container {
@@ -2106,27 +2111,28 @@ img {
   align-items: center;
   gap: 8px;
   padding: 0.5rem 1rem;
-  border-radius: 6px;
-  background: var(--space-grey);
-  color: #fff;
+  color: var(--mint-pop);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-bottom: 1.75rem;
+  margin-bottom: 0.75rem;
+  margin-top: 2rem;
 }
 
 .industry-hero__content h1 {
-  font-size: clamp(3.2rem, 5vw, 4.8rem);
-  line-height: 1;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 5vw, 3.7rem);
+  line-height: 1.1;
   letter-spacing: -2px;
-  color: var(--navy-text);
+  color: var(--dark);
   margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 .industry-hero__content p {
-  font-size: 1.1rem;
-  color: var(--steel-blue);
+  color: rgba(var(--ink-rgb), 0.68);
+  font-size: 1.05rem;
   line-height: 1.8;
   margin-bottom: 2.25rem;
 }
@@ -2150,24 +2156,24 @@ img {
 }
 
 .industry-hero__buttons .btn-primary {
-  background: var(--space-grey);
+  background: var(--mint-pop);
   color: #fff;
-  border: 1px solid var(--space-grey);
+  border: 1px solid var(--mint-deep);
 }
 
 .industry-hero__buttons .btn-primary:hover {
-  background: #34434f;
+  background: var(--mint-deep);
 }
 
 .industry-hero__buttons .btn-secondary {
   background: transparent;
-  color: var(--navy-text);
-  border: 1px solid #d8d8d8;
+  color: var(--mint-pop);
+  border: 1px solid var(--mint-pop);
 }
 
 .industry-hero__buttons .btn-secondary:hover {
-  border-color: var(--space-grey);
-  background: rgba(65, 85, 100, 0.05);
+  border-color: var(--mint-deep);
+  background: rgba(20, 215, 210, 0.1);
 }
 
 /* ---------- CHALLENGES ---------- */
@@ -2180,6 +2186,8 @@ img {
 }
 
 .industry-challenges h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
   font-size: clamp(2rem, 3vw, 2.6rem);
   color: var(--navy-text);
   margin-bottom: 2.5rem;
@@ -2198,10 +2206,11 @@ img {
   display: grid;
   grid-template-columns: 48px 1fr 1.4fr;
   gap: 1.5rem;
+  border-radius: 10px;
   align-items: center;
   padding: 1.5rem 1.75rem;
   background: #fff;
-  border-radius: 12px;
+
   border-left: 3px solid transparent;
   transition: 0.25s ease;
 }
@@ -2248,6 +2257,7 @@ img {
   font-size: clamp(2rem, 3vw, 2.6rem);
   color: var(--navy-text);
   margin-bottom: 2.5rem;
+  font-weight: 500;
 }
 
 .industry-solutions-grid {
@@ -2264,7 +2274,7 @@ img {
   gap: 0.5rem;
   padding: 1.75rem;
   background: var(--fog);
-  border-radius: 14px;
+
   transition: 0.3s ease;
 }
 
@@ -2318,8 +2328,11 @@ img {
 }
 
 .industry-products h2 {
-  color: #fff;
+  color: var(--sky-blue);
   margin-bottom: 2rem;
+  text-decoration-line: underline;
+  text-decoration-style: solid; /* Forces a straight line */
+  text-underline-offset: 8px;
 }
 
 .industry-products-grid {
@@ -2327,14 +2340,11 @@ img {
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  overflow: hidden;
 }
 
 .industry-product-card {
   padding: 1.75rem 1.5rem;
   background: var(--space-grey);
-  font-weight: 600;
   color: #fff;
   transition: 0.25s ease;
   cursor: pointer;
@@ -2358,6 +2368,7 @@ img {
   font-size: clamp(2rem, 3vw, 2.6rem);
   color: var(--navy-text);
   margin-bottom: 2.5rem;
+  font-weight: 500;
 }
 
 .industry-case-card {
@@ -2366,7 +2377,6 @@ img {
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem 2rem;
   padding: 3.5rem;
-  border-radius: 20px;
   background: linear-gradient(
     135deg,
     var(--space-grey),
@@ -2554,7 +2564,7 @@ img {
 
 .partners__heading {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.01em;
   margin: 0 0 0.85rem;
   color: var(--pt-navy);
@@ -2893,7 +2903,7 @@ img {
 
 .insights__heading {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.01em;
   margin: 0 0 0.85rem;
 }
@@ -3588,7 +3598,7 @@ img {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--mint-deep, var(--future-blue));
+  color: var(--mint-pop, var(--future-blue));
   margin-bottom: 1.25rem;
 }
 
@@ -3954,7 +3964,7 @@ img {
 /* ---------- HERO ---------- */
 
 .aip-hero {
-  padding: 9rem 0 1rem;
+  padding: 8rem 0 1rem;
   background:
     radial-gradient(
       circle at 20% 20%,
@@ -3995,9 +4005,12 @@ img {
   color: var(--navy-text);
   margin: 0 0 1.5rem;
   max-width: 780px;
-  
+  font-weight: 100px;
 }
 
+.aip-hero__title {
+  font-weight: 500;
+}
 .aip-hero__description {
   max-width: 620px;
   font-size: 1.05rem;
@@ -4011,7 +4024,7 @@ img {
   flex-direction: column;
   gap: 2rem;
   padding-left: 3rem;
-  border-left: 1px solid var(--border-on-light);
+  border-left: 2px solid var(--border-on-light);
 }
 
 .aip-hero__stat {
@@ -4023,9 +4036,10 @@ img {
   display: block;
   font-size: 2.2rem;
   font-weight: 700;
-  color: var(--navy-text);
+  color: var(--mint-deep);
   line-height: 1;
   margin-bottom: 0.4rem;
+  font-weight: 600;
 }
 
 .aip-hero__stats span {
@@ -4050,9 +4064,9 @@ img {
 .aip-tab {
   padding: 0.6rem 1.25rem;
   border-radius: 999px;
-  border: 1px solid var(--border-on-light);
+  border: 1px solid var(--mint-deep);
   background: #fff;
-  color: var(--tint-blue-muted);
+  color: var(--space-grey);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -4061,13 +4075,13 @@ img {
 
 .aip-tab:hover {
   border-color: var(--mint-bright-line);
-  color: var(--navy-text);
+  color: var(--mint-pop);
 }
 
 .aip-tab.is-active {
-  background: var(--space-grey);
-  border-color: var(--space-grey);
-  color: #fff;
+  background: var(--mint-pop);
+  border-color: var(--mint-deep);
+  color: var(--space-grey);
 }
 
 /* ---------- FEATURED ---------- */
@@ -4262,6 +4276,7 @@ img {
   font-size: clamp(1.75rem, 3vw, 2.4rem);
   color: var(--navy-text);
   margin: 0 0 2.5rem;
+  font-weight: 500;
 }
 
 .aip-process__grid {
@@ -4345,7 +4360,7 @@ img {
 /* ---------- HERO ---------- */
 
 .ptn-hero {
-  padding: 9rem 0 2rem;
+  padding: 6rem 0 2rem;
   border-bottom: 1px solid var(--border-on-light);
 }
 
@@ -4373,6 +4388,7 @@ img {
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--navy-text);
+  font-weight: 500;
 }
 
 .ptn-hero__description {
@@ -4437,7 +4453,7 @@ img {
 .ptn-list__name {
   flex: 1;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 550;
   color: var(--navy-text);
   transition: color 0.2s ease;
 }
@@ -4465,31 +4481,29 @@ img {
 
 .ptn-preview {
   position: sticky;
-  top: 120px;
+  align-self: start;
+  margin-top: 0;
 }
 
 .ptn-preview__card {
   padding: 3rem;
-  border-radius: 20px;
-  background: linear-gradient(
-    150deg,
-    var(--space-grey),
-    #1c2b32 75%,
-    var(--future-blue) 190%
-  );
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #fff;
+  margin-top: -5rem;
 }
 
 .ptn-preview__logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90px;
-  width: 90px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 1rem;
-  margin-bottom: 1.75rem;
+  height: 160px;
+  width: 160px;
+  background: transparent;
+  padding: 0;
 }
 
 .ptn-preview__logo img {
@@ -4511,12 +4525,14 @@ img {
 .ptn-preview__card h2 {
   font-size: 1.7rem;
   margin: 0 0 0.9rem;
+  color: var(--navy-text);
+  font-weight: 600;
 }
 
 .ptn-preview__card p {
   font-size: 0.98rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--tint-blue-muted);
   margin: 0 0 1.75rem;
 }
 
@@ -4605,26 +4621,18 @@ img {
   background: var(--white);
 }
 
-.pd-eyebrow {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mint-pop);
+.pd-eyebrow--on-dark {
+  color: var(--future-blue);
   margin-bottom: 1rem;
 }
 
-.pd-eyebrow--on-dark {
-  color: var(--future-blue);
-}
-
 .pd-section-title {
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   line-height: 1.2;
   color: var(--navy-text);
   margin: 0;
   max-width: 720px;
+  font-weight: 500;
 }
 
 /* ---------- HERO ---------- */
@@ -4646,7 +4654,7 @@ img {
 }
 
 .pd-hero__text {
-  max-width: 760px;
+  max-width: 900px;
   text-align: center;
 }
 
@@ -4654,14 +4662,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 84px;
-  height: 84px;
-  margin: 0 auto 1.75rem;
-  border-radius: 16px;
-  background: #fff;
-  border: 1px solid var(--border-on-light);
-  box-shadow: var(--shadow-soft);
-  padding: 1rem;
+  width: 200px;
+  height: 200px;
+  margin: -80px auto 0.1rem;
 }
 
 .pd-hero__logo img {
@@ -4677,6 +4680,8 @@ img {
   letter-spacing: -0.01em;
   color: var(--navy-text);
   margin: 0 0 1.25rem;
+  font-weight: 500;
+  max-width: 1200px;
 }
 
 .pd-hero__text p {
@@ -4692,7 +4697,7 @@ img {
   align-items: center;
   padding: 0.9rem 1.9rem;
   border-radius: 8px;
-  background: var(--space-grey);
+  background: var(--mint-pop);
   color: #fff;
   font-weight: 600;
   font-size: 0.95rem;
@@ -4902,10 +4907,6 @@ img {
   padding: 4.5rem 0;
   background: var(--space-grey);
   color: #fff;
-}
-
-.pd-solutions .pd-eyebrow {
-  color: var(--future-blue);
 }
 
 .pd-solutions .pd-section-title {

@@ -93,7 +93,7 @@ export default function AIProductsPage() {
         <section className="aip-hero">
           <div className="page-container aip-hero__row">
             <div className="aip-hero__content">
-              <span className="aip-hero__eyebrow">AI &amp; Products</span>
+            
               <h1 className="aip-hero__title">
                 AI Products Built for
                 <br />

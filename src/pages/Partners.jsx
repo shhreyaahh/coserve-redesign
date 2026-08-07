@@ -15,11 +15,8 @@ export default function PartnersPage() {
         <section className="ptn-hero">
           <div className="page-container ptn-hero__row">
             <div>
-              <span className="ptn-hero__eyebrow">Partners</span>
               <h1 className="ptn-hero__title">
-                The platforms
-            
-                we build on.
+                The platforms we build on.
               </h1>
             </div>
             <p className="ptn-hero__description">

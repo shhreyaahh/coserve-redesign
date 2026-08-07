@@ -1,0 +1,18 @@
+ai-products-header h2 {
+  margin: 0;
+  width: 100%;
+  color: var(--dark);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.ai-products-supporting {
+  margin-top: 20px;
+  width: 100%;
+  color: rgba(var(--ink-rgb), 0.68);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
