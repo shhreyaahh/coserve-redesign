@@ -32,14 +32,28 @@ function WaveDivider() {
   return (
     <div className="wave-divider" aria-hidden="true">
       <svg viewBox="0 0 400 24" preserveAspectRatio="none">
-        <line x1="0" y1="12" x2="168" y2="12" stroke="var(--mint-deep)" strokeWidth="2" />
+        <line
+          x1="0"
+          y1="12"
+          x2="168"
+          y2="12"
+          stroke="var(--mint-deep)"
+          strokeWidth="2"
+        />
         <path
           d="M168 12 C 178 2, 184 22, 194 12 C 204 2, 210 22, 220 12"
           stroke="var(--mint-deep)"
           strokeWidth="2"
           fill="none"
         />
-        <line x1="220" y1="12" x2="400" y2="12" stroke="var(--mint-deep)" strokeWidth="2" />
+        <line
+          x1="220"
+          y1="12"
+          x2="400"
+          y2="12"
+          stroke="var(--mint-deep)"
+          strokeWidth="2"
+        />
       </svg>
     </div>
   );
@@ -61,17 +75,44 @@ const WHAT_WE_DO = [
 ];
 
 const PRINCIPLES = [
-  { n: "Practical AI", d: "We build for the workflow that exists today, not a proof of concept for a demo day." },
-  { n: "Measurable ROI", d: "Every engagement is tied to a number before it starts, and reported against it after." },
-  { n: "Industry-first thinking", d: "We learn how the business runs before we open the IDE." },
-  { n: "Built to integrate", d: "Our work sits on top of the ERP and CRM you already run, not in place of it." },
+  {
+    n: "Practical AI",
+    d: "We focus on real-world applications that drive business outcomes, not experimental concepts built for demos.",
+  },
+  {
+    n: "Measurable Impact",
+    d: "Every implementation is tied to performance, efficiency, and clear business results from day one.",
+  },
+  {
+    n: "Deep Expertise",
+    d: "We go deep on a focused set of platforms instead of spreading thin across everything.",
+  },
+  {
+    n: "Built to Integrate",
+    d: "Our systems are designed to fit into your existing enterprise stack without disruption.",
+  },
 ];
-
 const TEAM = [
-  { name: "Full Name", title: "Chief Executive Officer", bio: "One line on their background and what they own here." },
-  { name: "Full Name", title: "Chief Technology Officer", bio: "One line on their background and what they own here." },
-  { name: "Full Name", title: "Head of AI Solutions", bio: "One line on their background and what they own here." },
-  { name: "Full Name", title: "Head of Client Delivery", bio: "One line on their background and what they own here." },
+  {
+    name: "Full Name",
+    title: "Chief Executive Officer",
+    bio: "One line on their background and what they own here.",
+  },
+  {
+    name: "Full Name",
+    title: "Chief Technology Officer",
+    bio: "One line on their background and what they own here.",
+  },
+  {
+    name: "Full Name",
+    title: "Head of AI Solutions",
+    bio: "One line on their background and what they own here.",
+  },
+  {
+    name: "Full Name",
+    title: "Head of Client Delivery",
+    bio: "One line on their background and what they own here.",
+  },
 ];
 
 export default function CoServeAboutUs() {
@@ -292,7 +333,7 @@ export default function CoServeAboutUs() {
           margin: 0;
         }
 
-        /* ---------- Our Approach ---------- */
+/* ---------- Our Approach ---------- */
         .approach {
           padding: clamp(3.5rem, 5vw, 4.5rem) 0;
           background: rgba(var(--ink-rgb), 0.03);
@@ -325,7 +366,7 @@ export default function CoServeAboutUs() {
           margin: 0;
         }
 
-        /* ---------- Leadership ---------- */
+/* ---------- Leadership ---------- */
         .leadership {
           padding: clamp(3.5rem, 5vw, 4.5rem) 0;
         }
@@ -437,6 +478,15 @@ export default function CoServeAboutUs() {
         .about-cta .cta-btn:hover { transform: translateY(-3px); }
         .about-cta .cta-btn:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
 
+.about-container strong {
+          font-family: var(--font-body);
+          font-size: 1.05rem;
+          line-height: 1.8;
+          color: rgba(var(--ink-rgb), 0.72);
+          padding-top: 3rem;
+          margin-bottom: 0px;
+        }
+
         @media (max-width: 860px) {
           .story-row { grid-template-columns: 1fr; min-height: 0; }
           .row-image { min-height: 260px; }
@@ -458,15 +508,12 @@ export default function CoServeAboutUs() {
       <div className="about-container">
         {/* ---------- HERO ---------- */}
         <div className="about-top">
-          
-          <h2>
-            Building the Future of Enterprise <span>Through AI.</span>
-          </h2>
+          <h2>Engineering Enterprise Transformation</h2>
           <p>
-            At Coserve Software Solutions, we help organisations modernise, automate,
-            and scale through intelligent enterprise technology. Combining deep
-            expertise in ERP/CRM and AI-driven solutions, we transform complex
-            business challenges into measurable business outcomes.
+            At Coserve, we design and implement enterprise systems that power
+            real business operations. From AI-driven workflows to ERP and
+            platform integrations, our work focuses on systems that are
+            scalable, reliable, and built to deliver measurable outcomes.
           </p>
         </div>
 
@@ -482,17 +529,16 @@ export default function CoServeAboutUs() {
             <div className="row-content">
               <h3>Our Story</h3>
               <p>
-                From our best ERP and CRM implementations to AI-powered enterprise
-                transformation, our journey has always been driven by one belief:
-                technology should simplify business and create lasting value.
-              </p>
-              <p>
-                Coserve began as a transformation solutions enabler, providing
-                seamless digital evolution for organisations looking to expand
-                and increase their revenues. That starting point still shapes
-                how we work — every engagement is judged by the business
-                outcome it produces, not the complexity of what we built to
-                get there.
+                Coserve was built on a simple idea — enterprise systems should
+                actually work the way businesses operate. We saw organizations
+                struggling with fragmented platforms, complex implementations,
+                and solutions that looked good on paper but failed in execution.
+                So we focused on doing things differently. Fewer platforms,
+                deeper expertise, and a hands-on approach to building systems
+                that are reliable, scalable, and aligned with real business
+                needs. Today, we work at the intersection of AI, ERP, and
+                enterprise integration — helping organizations move from
+                complexity to clarity.
               </p>
             </div>
           </div>
@@ -502,8 +548,8 @@ export default function CoServeAboutUs() {
               <h3>Our Vision</h3>
               <p>
                 To become the trusted AI transformation partner for enterprises,
-                combining intelligent innovation with dependable business systems to
-                shape the future of digital enterprise.
+                combining intelligent innovation with dependable business
+                systems to shape the future of digital enterprise.
               </p>
               <p>
                 We simplify transformation through a humanised experience,
@@ -525,9 +571,10 @@ export default function CoServeAboutUs() {
             <div className="row-content">
               <h3>Our Values</h3>
               <p>
-                We believe in purpose-driven innovation, customer-first thinking,
-                thoughtful transformation and long-term partnerships that deliver
-                real, measurable business impact. In practice, that means:
+                We believe in purpose-driven innovation, customer-first
+                thinking, thoughtful transformation and long-term partnerships
+                that deliver real, measurable business impact. In practice, that
+                means:
               </p>
               <ul>
                 <li>Exceeding expectations, every engagement</li>
@@ -588,6 +635,10 @@ export default function CoServeAboutUs() {
               </div>
             ))}
           </div>
+          <strong>
+            We don’t just implement tools — we build the systems your business
+            runs on.
+          </strong>
         </div>
       </div>
 
@@ -596,7 +647,14 @@ export default function CoServeAboutUs() {
         <div className="about-container">
           <span className="section-tag">Leadership</span>
           <div className="leadership-intro">
-            <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 500, color: "var(--dark)", fontSize: "1.9rem" }}>
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 500,
+                color: "var(--dark)",
+                fontSize: "1.9rem",
+              }}
+            >
               The team behind the transformation work.
             </h2>
             <p>
@@ -622,7 +680,7 @@ export default function CoServeAboutUs() {
         <WaveDivider />
       </div>
 
-<CTASection />
+      <CTASection />
     </div>
   );
 }
